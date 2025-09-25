@@ -1,37 +1,40 @@
 import sys
 
+states = {
+    "Oregon": "OR",
+    "Alabama": "AL",
+    "New Jersey": "NJ",
+    "Colorado": "CO",
+}
+capital_cities = {
+    "OR": "Salem",
+    "AL": "Montgomery",
+    "NJ": "Trenton",
+    "CO": "Denver",
+}
+
 def get_state(search):
-    states = {
-        "Oregon": "OR",
-        "Alabama": "AL",
-        "New Jersey": "NJ",
-        "Colorado": "CO",
-    }
-    capital_cities = {
-        "OR": "Salem",
-        "AL": "Montgomery",
-        "NJ": "Trenton",
-        "CO": "Denver",
-    }
-    
-    search_items = search.split(",")
-    if len(search_items) < 1 or len(search_items) > 10:
+    items = [s.strip() for s in search.split(",") if s.strip()]
+    if not (1 <= len(items) <= 10):
         return
 
-    reverse_capitals = {v: k for k, v in capital_cities.items()}
-    reverse_states = {v:k for k, v in states.items()}
+    states_lu = {name.lower(): name for name in states}
+    capitals_lu = {cap.lower(): code for code, cap in capital_cities.items()}
+    reverse_states = {code: name for name, code in states.items()}
 
-    for item in search_items:
-        state_match = states.get(item)
-        if state_match:
-            print(f"{state_match} is a state")
-            return
-        capital_match = reverse_capitals.get(item)
-        if capital_match:
-            print(f"{capital_match} is the capital of {reverse_states.get(reverse_capitals.get(capital_match))}")
-            return
-        print(f"{item} is neither a capital city nor a state")
-        
+    for item in items:
+        key = item.lower()
+        if key in states_lu:
+            state = states_lu[key]
+            capital = capital_cities[states[state]]
+            print(f"{capital} is the capital of {state}")
+        elif key in capitals_lu:
+            code = capitals_lu[key]
+            capital = capital_cities[code]
+            state = reverse_states[code]
+            print(f"{capital} is the capital of {state}")
+        else:
+            print(f"{item} is neither a capital city nor a state")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
