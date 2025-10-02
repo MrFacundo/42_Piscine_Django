@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{title}</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 60%;
+		}
+		th, td {
+			border: 2px solid #000;
+			padding: 8px 12px;
+			text-align: left;
+		}
+		th {
+			background-color: #f2f2f2;
+		}
+	</style>
+</head>
+<body>
+	<h1 style="color: #2d2d2d;">{name} {surname}</h1>
+	<h2>{profession}</h2>
+	<section>
+		<h3>Personal Information</h3>
+		<ul>
+			<li><strong>Age:</strong> {age}</li>
+		</ul>
+	</section>
+	<section>
+		<h3>Skills</h3>
+		<ol>
+			<li>{skill1}</li>
+			<li>{skill2}</li>
+			<li>{skill3}</li>
+			<li>{skill4}</li>
+		</ol>
+	</section>
+</body>
+</html>

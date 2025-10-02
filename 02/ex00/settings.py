@@ -1,0 +1,9 @@
+title = "CV"
+profession = "AI prompter"
+name = "João"
+surname = "Copiloto"
+age = 20
+skill1 = "Copilot completions"
+skill2 = "Copilot chat"
+skill3 = "Copy from ChatGPT"
+skill4 = "Paste copied text"
