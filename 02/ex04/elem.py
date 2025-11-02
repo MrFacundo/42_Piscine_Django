@@ -12,8 +12,14 @@ class Text(str):
         """
         Do you really need a comment to understand this method?..
         """
-        return super().__str__().replace('\n', '\n<br />\n')
-
+        return (
+            super().__str__()
+            .replace('&', '&amp;')
+            .replace('<', '&lt;')
+            .replace('>', '&gt;')
+            .replace('"', '&quot;')
+            .replace('\n', '\n<br />\n')
+        )
 
 class Elem:
     """
@@ -27,7 +33,10 @@ class Elem:
 
         Obviously.
         """
-        [...]
+        self.tag = tag
+        self.attr = attr or {}
+        self.content = content or []
+        self.tag_type = tag_type
 
     def __str__(self):
         """
